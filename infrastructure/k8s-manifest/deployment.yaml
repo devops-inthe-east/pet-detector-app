@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pet-detector-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pet-detector
+  template:
+    metadata:
+      labels:
+        app: pet-detector
+    spec:
+      containers:
+      - name: pet-detector
+        image: 222038211676.dkr.ecr.us-east-1.amazonaws.com/pet-detector-app:latest
+        ports:
+        - containerPort: 8000
