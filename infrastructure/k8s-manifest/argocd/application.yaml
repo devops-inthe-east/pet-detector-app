@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pet-detector-argo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/devops-inthe-east/pet-detector-app.git'
+    targetRevision: HEAD
+    path: starter-project/infrastructure/k8s-manifest
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
